@@ -185,7 +185,7 @@ Google Android团队在2012年起开设了Training课程，从开始的十几篇
       * [为App内容开启深度链接](http://hukai.me/android-training-course-in-chinese/ux/app-indexing/deep-linking.html)
       * [为索引指定App内容](http://hukai.me/android-training-course-in-chinese/ux/app-indexing/enable-app-indexing.html)
 * [UI](ui/index.html)
-   * [为多屏幕设计](http://hukai.me/android-training-course-in-chinese/ui/multiscreen/index.html) - @[riverfeng](https://github.com/riverfeng) - 30%
+   * [为多屏幕设计](http://hukai.me/android-training-course-in-chinese/ui/multiscreen/index.html) - @[riverfeng](https://github.com/riverfeng)
       * [兼容不同的屏幕大小](http://hukai.me/android-training-course-in-chinese/ui/multiscreen/screen-sizes.html)
       * [兼容不同的屏幕密度](http://hukai.me/android-training-course-in-chinese/ui/multiscreen/screen-desities.html)
       * [实现可适应的UI](http://hukai.me/android-training-course-in-chinese/ui/multiscreen/adapt-ui.html)
@@ -220,7 +220,7 @@ Google Android团队在2012年起开设了Training课程，从开始的十几篇
       * [处理多触摸手势](http://hukai.me/android-training-course-in-chinese/input/gestures/multi.html)
       * [拖拽与缩放](http://hukai.me/android-training-course-in-chinese/input/gestures/scale.html)
       * [管理ViewGroup中的触摸事件](http://hukai.me/android-training-course-in-chinese/input/gestures/viewgroup.html)
-   * [处理键盘输入](http://hukai.me/android-training-course-in-chinese/input/keyboard-input/index.html) - @[zhaochunqi](https://github.com/zhaochunqi) - 20%
+   * [处理键盘输入](http://hukai.me/android-training-course-in-chinese/input/keyboard-input/index.html) - @[zhaochunqi](https://github.com/zhaochunqi) - 100%(初步完成，本人正在自我检查中)
       * [指定输入法类型](http://hukai.me/android-training-course-in-chinese/input/keyboard-input/type.html)
       * [处理输入法可见性](http://hukai.me/android-training-course-in-chinese/input/keyboard-input/visibility.html)
       * [支持输入法导航](http://hukai.me/android-training-course-in-chinese/input/keyboard-input/navigation.html)
@@ -253,7 +253,7 @@ Google Android团队在2012年起开设了Training课程，从开始的十几篇
       * [判断与监测Docking状态](http://hukai.me/android-training-course-in-chinese/performance/monitor-device-state/docking-monitor.html)
       * [判断与监测网络连接状态](http://hukai.me/android-training-course-in-chinese/performance/monitor-device-state/connectivity-monitor.html)
       * [根据需要操作Broadcast接受者](http://hukai.me/android-training-course-in-chinese/performance/monitor-device-state/manifest-receivers.html)
-   * [多线程操作](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/index.html) - @[AllenZheng1991](https://github.com/AllenZheng1991) - 5%
+   * [多线程操作](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/index.html) - @[AllenZheng1991](https://github.com/AllenZheng1991)
       * [指定一段代码执行在一个线程](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/define-runnable.html)
       * [为多线程创建线程池](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/create-threadpool.html)
       * [执行代码运行在线程池中](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/run-code.html)
