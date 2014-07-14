@@ -254,10 +254,10 @@ Google Android团队在2012年起开设了Training课程，从开始的十几篇
       * [判断与监测网络连接状态](http://hukai.me/android-training-course-in-chinese/performance/monitor-device-state/connectivity-monitor.html)
       * [根据需要操作Broadcast接受者](http://hukai.me/android-training-course-in-chinese/performance/monitor-device-state/manifest-receivers.html)
    * [多线程操作](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/index.html) - @[AllenZheng1991](https://github.com/AllenZheng1991)
-      * [指定一段代码执行在一个线程](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/define-runnable.html)
+      * [在一个线程中执行一段特定的代码](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/define-runnable.html)
       * [为多线程创建线程池](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/create-threadpool.html)
-      * [执行代码运行在线程池中](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/run-code.html)
-      * [与UI线程进行交互](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/communicate-ui.html)
+      * [在线程池中的一个线程里执行代码](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/run-code.html)
+      * [与UI线程通信](http://hukai.me/android-training-course-in-chinese/performance/multi-threads/communicate-ui.html)
    * [避免程序无响应ANR](http://hukai.me/android-training-course-in-chinese/performance/perf-anr/index.html) - @[kesenhoo](https://github.com/kesenhoo)
    * [JNI Tips](http://hukai.me/android-training-course-in-chinese/performance/perf-jni/index.html) - @[pedant](https://github.com/pedant) - 20%
    * [SMP for Android](http://hukai.me/android-training-course-in-chinese/performance/smp/index.html) - 待认领
