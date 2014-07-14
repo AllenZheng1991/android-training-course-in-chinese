@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.2.3" data-basepath="..\.." data-revision="1405242020994">
+    <div class="book"  data-level="11.2.3" data-basepath="..\.." data-revision="1405354591274">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1443,7 +1443,7 @@
         <li class="chapter " data-level="11.2.1" data-path="wearables/apps/creating.html">
             
             <a href="..\../wearables/apps/creating.html">
-                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并运行一个可穿戴的应用
+                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并执行可穿戴应用
             </a>
             
             
@@ -2238,7 +2238,7 @@
         <li class="chapter " data-level="14.2.4" data-path="input/keyboard-input/commands.html">
             
             <a href="..\../input/keyboard-input/commands.html">
-                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理输入命令
+                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理按键动作
             </a>
             
             
@@ -3173,7 +3173,7 @@
     
         <a href="..\../wearables/apps/index.html" title="创建可穿戴的应用" class="chapter done " data-progress="11.2" style="left: 47.72727272727273%;"></a>
     
-        <a href="..\../wearables/apps/creating.html" title="创建并运行一个可穿戴的应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
+        <a href="..\../wearables/apps/creating.html" title="创建并执行可穿戴应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
     
         <a href="..\../wearables/apps/layouts.html" title="创建自定义的布局" class="chapter done " data-progress="11.2.2" style="left: 48.484848484848484%;"></a>
     
@@ -3327,7 +3327,7 @@
     
         <a href="..\../input/keyboard-input/navigation.html" title="兼容硬件导航" class="chapter  " data-progress="14.2.3" style="left: 76.89393939393939%;"></a>
     
-        <a href="..\../input/keyboard-input/commands.html" title="处理输入命令" class="chapter  " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
+        <a href="..\../input/keyboard-input/commands.html" title="处理按键动作" class="chapter  " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
     
         <a href="..\../input/game-controller/index.html" title="兼容游戏控制器" class="chapter  " data-progress="14.3" style="left: 77.65151515151516%;"></a>
     
@@ -3454,9 +3454,53 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2650">
+                    <section class="normal" id="section-gitbook_834">
                     
-                        <h1 id="-">添加语音能力</h1>
+                        <blockquote>
+<p>编写: <a href="https://github.com/kesenhoo" target="_blank">kesenhoo</a> - 校对:</p>
+<p>原文: <a href="http://developer.android.com/training/wearables/apps/voice.html" target="_blank">http://developer.android.com/training/wearables/apps/voice.html</a></p>
+</blockquote>
+<h1 id="-">添加语音能力</h1>
+<p>语音指令是可穿戴体验的一个重要的部分。这使得用户可以释放双手，快速发出指令。穿戴提供了2种类型的语音操作：</p>
+<ul>
+<li><p><strong>系统提供的</strong></p>
+<p>这些语音指令都是基于任务的，并且内置在Wear的平台内。你在activity中过滤你想要接收的指令。例如包含&quot;Take a note&quot; 或者 &quot;Set an alarm&quot;的指令。</p>
+</li>
+<li><p><strong>应用提供的</strong></p>
+<p>这些语音指令都是基于应用的，你需要像声明一个Launcher Icon一样定义这些指令。用户通过说&quot;Start XXX&quot;来使用那些语音指令，然后会启动你指定启动的activity。</p>
+</li>
+</ul>
+<h2 id="-">声明系统提供的语音指令</h2>
+<p>Android Wear平台基于用户的操作提供了一些语音指令，例如&quot;Take a note&quot; 或者 &quot;Set an alarm&quot;。用户发出想要做的操作指令，让系统寻找应该启动最合适的activity。</p>
+<p>当用户说出语音指令时，你的应用能够被过滤出来启动一个activity。如果你想要启动一个service在后台执行任务，需要显示一个activity呈现作为线索。当你想要废弃这个可见的线索时，需要确保执行了finish()。</p>
+<p>例如，对于&quot;Take a note&quot;的指令，定义一个MyNoteActivity来接收这个指令:</p>
+<pre><code class="lang-java">&lt;activity android:name="MyNoteActivity"&gt;
+      &lt;intent-filter&gt;
+          &lt;action android:name="android.intent.action.SEND" /&gt;
+          &lt;category android:name="com.google.android.voicesearch.SELF_NOTE" /&gt;
+      &lt;/intent-filter&gt;
+  &lt;/activity&gt;
+</code></pre>
+<p>下面列出了Wear平台支持的语音指令：</p>
+<p><img src="voice_intent_1.png" alt="voice_intent_1">
+<img src="voice_intent_2.png" alt="voice_intent_2">
+<img src="voice_intent_3.png" alt="voice_intent_3"></p>
+<p>关于注册intent与获取intent extra的信息，请参考<a href="http://developer.android.com/guide/components/intents-common.html" target="_blank">Common intents</a>.</p>
+<h2 id="-">声明应用提供的语音指令</h2>
+<p>如果系统提供的语音指令无法满足你的需求，你可以使用&quot;Start MyActivityName&quot;的指令来直接启动你的应用。</p>
+<p>注册一个&quot;Start&quot;指令和注册手持应用上得Launcher是一样的。</p>
+<p>在&quot;Start&quot;指令的后面需要指定的文字, 这个文字需要注册在activity的label属性上。例如，下面的设置能够识别&quot;Start MyRunningApp&quot;的语音指令并启动StartRunActivity.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">application</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">activity</span> <span class="hljs-attribute">android:name</span>=<span class="hljs-value">"StartRunActivity"</span> <span class="hljs-attribute">android:label</span>=<span class="hljs-value">"MyRunningApp"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">intent-filter</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">action</span> <span class="hljs-attribute">android:name</span>=<span class="hljs-value">"android.intent.action.MAIN"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">category</span> <span class="hljs-attribute">android:name</span>=<span class="hljs-value">"android.intent.category.LAUNCHER"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">intent-filter</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">activity</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">application</span>&gt;</span>
+</code></pre>
+<h2 id="-">获取输入的自由语音</h2>
+<p>除了使用语音指令来启动activity之外，你也可以执行系统内置的语言识别activity来获取用户的语音输入。这对于获取用户的输入信息非常有帮助，例如执行搜索或者发送一个消息。</p>
 
                     
                     </section>

@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="11.1.3" data-basepath="..\.." data-revision="1405242020994">
+    <div class="book"  data-level="11.1.3" data-basepath="..\.." data-revision="1405354591274">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1443,7 +1443,7 @@
         <li class="chapter " data-level="11.2.1" data-path="wearables/apps/creating.html">
             
             <a href="..\../wearables/apps/creating.html">
-                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并运行一个可穿戴的应用
+                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并执行可穿戴应用
             </a>
             
             
@@ -2238,7 +2238,7 @@
         <li class="chapter " data-level="14.2.4" data-path="input/keyboard-input/commands.html">
             
             <a href="..\../input/keyboard-input/commands.html">
-                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理输入命令
+                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理按键动作
             </a>
             
             
@@ -3173,7 +3173,7 @@
     
         <a href="..\../wearables/apps/index.html" title="创建可穿戴的应用" class="chapter  " data-progress="11.2" style="left: 47.72727272727273%;"></a>
     
-        <a href="..\../wearables/apps/creating.html" title="创建并运行一个可穿戴的应用" class="chapter  " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
+        <a href="..\../wearables/apps/creating.html" title="创建并执行可穿戴应用" class="chapter  " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
     
         <a href="..\../wearables/apps/layouts.html" title="创建自定义的布局" class="chapter  " data-progress="11.2.2" style="left: 48.484848484848484%;"></a>
     
@@ -3327,7 +3327,7 @@
     
         <a href="..\../input/keyboard-input/navigation.html" title="兼容硬件导航" class="chapter  " data-progress="14.2.3" style="left: 76.89393939393939%;"></a>
     
-        <a href="..\../input/keyboard-input/commands.html" title="处理输入命令" class="chapter  " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
+        <a href="..\../input/keyboard-input/commands.html" title="处理按键动作" class="chapter  " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
     
         <a href="..\../input/game-controller/index.html" title="兼容游戏控制器" class="chapter  " data-progress="14.3" style="left: 77.65151515151516%;"></a>
     
@@ -3454,13 +3454,55 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2660">
+                    <section class="normal" id="section-gitbook_844">
                     
                         <blockquote>
 <p>编写:<a href="https://github.com/wangyacheng" target="_blank">wangyachen</a> - 校对:</p>
 <p>原文:</p>
 </blockquote>
 <h1 id="-notification-">为Notification添加显示页面</h1>
+<p>当你想要在不需要用户在他们的手机上打开你的app的情况下，还可以让你表达更多的信息，那么你可以在wear上的Notification中添加一个或更多的页面。</p>
+<p><img src="09_pages.png" alt="">
+<img src="08_pages.png" alt=""></p>
+<p>为了创建一个多页的Notification，你需要：</p>
+<ol>
+<li>通过<a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html" target="_blank">NotificationCompat.Builder</a>创建主Notification（首页），以你想要的方式使其出现在手持设备上。</li>
+<li>通过<a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html" target="_blank">NotificationCompat.Builder</a>为wear添加更多的页面。
+3.通过<a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.WearableExtender.html#addPage(android.app.Notification" target="_blank">addPage()</a>方法为主Notification应用这些添加的页面，或者通过<a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.WearableExtender.html#addPage(android.app.Notification" target="_blank">addPage()</a>添加一个<a href="http://developer.android.com/reference/java/util/Collection.html" target="_blank">Collection</a>的多个页面。</li>
+</ol>
+<p>举个例子，以下代码为Notification添加了第二个页面：</p>
+<pre><code class="lang-java"><span class="hljs-comment">// Create builder for the main notification</span>
+NotificationCompat.Builder notificationBuilder =
+        <span class="hljs-keyword">new</span> NotificationCompat.Builder(<span class="hljs-keyword">this</span>)
+        .setSmallIcon(R.drawable.new_message)
+        .setContentTitle(<span class="hljs-string">"Page 1"</span>)
+        .setContentText(<span class="hljs-string">"Short message"</span>)
+        .setContentIntent(viewPendingIntent);
+
+<span class="hljs-comment">// Create a big text style for the second page</span>
+BigTextStyle secondPageStyle = <span class="hljs-keyword">new</span> NotificationCompat.BigTextStyle();
+secondPageStyle.setBigContentTitle(<span class="hljs-string">"Page 2"</span>)
+               .bigText(<span class="hljs-string">"A lot of text..."</span>);
+
+<span class="hljs-comment">// Create second page notification</span>
+Notification secondPageNotification =
+        <span class="hljs-keyword">new</span> NotificationCompat.Builder(<span class="hljs-keyword">this</span>)
+        .setStyle(secondPageStyle)
+        .build();
+
+<span class="hljs-comment">// Add second page with wearable extender and extend the main notification</span>
+Notification twoPageNotification =
+        <span class="hljs-keyword">new</span> WearableExtender()
+                .addPage(secondPageNotification)
+                .extend(notificationBuilder)
+                .build();
+
+<span class="hljs-comment">// Issue the notification</span>
+notificationManager =
+        NotificationManagerCompat.from(<span class="hljs-keyword">this</span>);
+notificationManager.notify(notificationId, twoPageNotification);
+</code></pre>
+<p>下一课：<a href="stacks.html">以Stack的方式显示Notifications</a></p>
 
                     
                     </section>

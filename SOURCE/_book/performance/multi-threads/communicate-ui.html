@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="16.5.4" data-basepath="..\.." data-revision="1405242020994">
+    <div class="book"  data-level="16.5.4" data-basepath="..\.." data-revision="1405354591274">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1443,7 +1443,7 @@
         <li class="chapter " data-level="11.2.1" data-path="wearables/apps/creating.html">
             
             <a href="..\../wearables/apps/creating.html">
-                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并运行一个可穿戴的应用
+                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并执行可穿戴应用
             </a>
             
             
@@ -2238,7 +2238,7 @@
         <li class="chapter " data-level="14.2.4" data-path="input/keyboard-input/commands.html">
             
             <a href="..\../input/keyboard-input/commands.html">
-                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理输入命令
+                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理按键动作
             </a>
             
             
@@ -3173,7 +3173,7 @@
     
         <a href="..\../wearables/apps/index.html" title="创建可穿戴的应用" class="chapter done " data-progress="11.2" style="left: 47.72727272727273%;"></a>
     
-        <a href="..\../wearables/apps/creating.html" title="创建并运行一个可穿戴的应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
+        <a href="..\../wearables/apps/creating.html" title="创建并执行可穿戴应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
     
         <a href="..\../wearables/apps/layouts.html" title="创建自定义的布局" class="chapter done " data-progress="11.2.2" style="left: 48.484848484848484%;"></a>
     
@@ -3327,7 +3327,7 @@
     
         <a href="..\../input/keyboard-input/navigation.html" title="兼容硬件导航" class="chapter done " data-progress="14.2.3" style="left: 76.89393939393939%;"></a>
     
-        <a href="..\../input/keyboard-input/commands.html" title="处理输入命令" class="chapter done " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
+        <a href="..\../input/keyboard-input/commands.html" title="处理按键动作" class="chapter done " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
     
         <a href="..\../input/game-controller/index.html" title="兼容游戏控制器" class="chapter done " data-progress="14.3" style="left: 77.65151515151516%;"></a>
     
@@ -3454,7 +3454,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2571">
+                    <section class="normal" id="section-gitbook_755">
                     
                         <blockquote>
 <p>编写:<a href="https://github.com/AllenZheng1991" target="_blank">AllenZheng1991</a></p>
@@ -3466,14 +3466,14 @@
 <p>任何一个APP都有自己特定的一个线程用来运行UI对象，比如<a href="http://developer.android.com/reference/android/view/View.html" target="_blank">View</a>对象，这个线程我们称之为UI线程。只有运行在UI线程中的对象能访问运行在其它线程中的对象。因为你的任务执行的线程来自一个线程池而不是执行在UI线程，所以他们不能访问UI对象。为了把数据从一个后台线程转移到UI线程，需要使用一个运行在UI线程里的<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>。</p>
 <h2 id="-ui-handler">在UI线程中定义一个Handler</h2>
 <p><a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>属于Android系统的线程管理框架的一部分。一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>对象用于接收消息和执行处理消息的代码。一般情况下，如果你为一个新线程创建了一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>，你还需要创建一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>，让它与一个已经存在的线程关联，用于这两个线程之间的通信。如果你把一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>关联到UI线程，处理消息的代码就会在UI线程中执行。</p>
-<p>你可以在一个用于创建你的线程池的类的构造方法中实例化一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>对象，并把它定义为全局变量，然后通过使用<a href="http://developer.android.com/reference/android/os/Handler.html#Handler(android.os.Looper" target="_blank">Handler(Looper)</a>)这一构造方法实例化它，用于关联到UI线程。<a href="http://developer.android.com/reference/android/os/Handler.html#Handler(android.os.Looper" target="_blank">Handler(Looper)</a>)这一构造方法需要传入了一个<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>对象，它是Android系统的线程管理框架中的另一部分。当你以一个特定的<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>实例为基础上去实例化一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>时，这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>与<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>运行在同一个线程里。例如：</p>
+<p>你可以在一个用于创建你的线程池的类的构造方法中实例化一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>对象，并把它定义为全局变量，然后通过使用<a href="http://developer.android.com/reference/android/os/Handler.html#Handler(android.os.Looper)" target="_blank">Handler(Looper)</a>这一构造方法实例化它，用于关联到UI线程。<a href="http://developer.android.com/reference/android/os/Handler.html#Handler(android.os.Looper)" target="_blank">Handler(Looper)</a>这一构造方法需要传入了一个<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>对象，它是Android系统的线程管理框架中的另一部分。当你在一个特定的<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>实例的基础上去实例化一个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>时，这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>与<a href="http://developer.android.com/reference/android/os/Looper.html" target="_blank">Looper</a>运行在同一个线程里。例如：</p>
 <pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-title">PhotoManager</span>() {
 ...
     <span class="hljs-comment">// Defines a Handler object that's attached to the UI thread</span>
     mHandler = <span class="hljs-keyword">new</span> Handler(Looper.getMainLooper()) {
     ...
 </code></pre>
-<p>在这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>里需要重写<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message" target="_blank">handleMessage()</a>)方法。当这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>接收到由另外一个线程管理的<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>发送过来的新消息时，Android系统会自动调用这个方法，而所有线程对应的<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>都会收到相同信息。例如：</p>
+<p>在这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>里需要重写<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message)" target="_blank">handleMessage()</a>方法。当这个<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>接收到由另外一个线程管理的<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>发送过来的新消息时，Android系统会自动调用这个方法，而所有线程对应的<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>都会收到相同信息。例如：</p>
 <pre><code class="lang-java"><span class="hljs-comment">/*
          * handleMessage() defines the operations to perform when
          * the Handler receives a new Message to process.
@@ -3490,7 +3490,7 @@
 </code></pre>
 <p>下一部分将向你展示如何用<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>转移数据。</p>
 <h2 id="-ui-">把数据从一个任务中转移到UI线程</h2>
-<p>为了从一个运行在后台线程的任务对象中转移数据到UI线程中的一个对象，首先需要存储任务对象中的数据和UI对象的引用；接下来传递任务对象和状态码给实例化<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>的那个对象。在这个对象里，发送一个包含任务对象和状态的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>给<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>。因为<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>也运行在UI线程中，所以它可以把数据转移到UI线程。</p>
+<p>为了从一个运行在后台线程的任务对象中转移数据到UI线程中的一个对象，首先需要存储任务对象中的数据和UI对象的引用；接下来传递任务对象和状态码给实例化<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>的那个对象。在这个对象里，发送一个包含任务对象和状态的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>给<a href="http://developer.android.com/reference/android/os/Handler.html" target="_blank">Handler</a>也运行在UI线程中，所以它可以把数据转移到UI线程。</p>
 <h3 id="-">在任务对象中存储数据</h3>
 <p>比如这里有一个<a href="http://developer.android.com/reference/java/lang/Runnable.html" target="_blank">Runnable</a>，它运行在一个编码了一个<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>且存储这个<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>到父类<em>PhotoTask</em>对象里的后台线程。这个<a href="http://developer.android.com/reference/java/lang/Runnable.html" target="_blank">Runnable</a>同样也存储了状态码<em>DECODE_STATE_COMPLETED</em>。</p>
 <pre><code class="lang-java"><span class="hljs-comment">// A class that decodes photo files into Bitmaps</span>
@@ -3582,7 +3582,7 @@ class PhotoDecodeRunnable implements Runnable {
         ...
     }
 </code></pre>
-<p>最终，<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message" target="_blank">Handler.handleMessage()</a>)会检查每个传入进来的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>，如果状态码是<em>TASK_COMPLETE</em>，这时任务就完成了，而传入的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>里的<em>PhotoTask</em>对象里同时包含一个<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>和一个<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank">ImageView</a>。因为<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message" target="_blank">Handler.handleMessage()</a>)运行在UI线程里，所以它能安全地转移<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>数据给<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank">ImageView</a>：</p>
+<p>最终，<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message)" target="_blank">Handler.handleMessage()</a>会检查每个传入进来的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>，如果状态码是<em>TASK_COMPLETE</em>，这时任务就完成了，而传入的<a href="http://developer.android.com/reference/android/os/Message.html" target="_blank">Message</a>里的<em>PhotoTask</em>对象里同时包含一个<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>和一个<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank">ImageView</a>。因为<a href="http://developer.android.com/reference/android/os/Handler.html#handleMessage(android.os.Message)" target="_blank">Handler.handleMessage()</a>运行在UI线程里，所以它能安全地转移<a href="http://developer.android.com/reference/android/graphics/Bitmap.html" target="_blank">Bitmap</a>数据给<a href="http://developer.android.com/reference/android/widget/ImageView.html" target="_blank">ImageView</a>：</p>
 <pre><code class="lang-java"><span class="hljs-keyword">private</span> <span class="hljs-title">PhotoManager</span>() {
         ...
             mHandler = <span class="hljs-keyword">new</span> Handler(Looper.getMainLooper()) {

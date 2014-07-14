@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>处理输入命令 | Android Training Course in Chinese</title>
+        <title>处理按键动作 | Android Training Course in Chinese</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.5.2">
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book"  data-level="14.2.4" data-basepath="..\.." data-revision="1405242020994">
+    <div class="book"  data-level="14.2.4" data-basepath="..\.." data-revision="1405354591274">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1443,7 +1443,7 @@
         <li class="chapter " data-level="11.2.1" data-path="wearables/apps/creating.html">
             
             <a href="..\../wearables/apps/creating.html">
-                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并运行一个可穿戴的应用
+                <i class="fa fa-check"></i> <b>11.2.1.</b> 创建并执行可穿戴应用
             </a>
             
             
@@ -2238,7 +2238,7 @@
         <li class="chapter " data-level="14.2.4" data-path="input/keyboard-input/commands.html">
             
             <a href="..\../input/keyboard-input/commands.html">
-                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理输入命令
+                <i class="fa fa-check"></i> <b>14.2.4.</b> 处理按键动作
             </a>
             
             
@@ -3173,7 +3173,7 @@
     
         <a href="..\../wearables/apps/index.html" title="创建可穿戴的应用" class="chapter done " data-progress="11.2" style="left: 47.72727272727273%;"></a>
     
-        <a href="..\../wearables/apps/creating.html" title="创建并运行一个可穿戴的应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
+        <a href="..\../wearables/apps/creating.html" title="创建并执行可穿戴应用" class="chapter done " data-progress="11.2.1" style="left: 48.10606060606061%;"></a>
     
         <a href="..\../wearables/apps/layouts.html" title="创建自定义的布局" class="chapter done " data-progress="11.2.2" style="left: 48.484848484848484%;"></a>
     
@@ -3327,7 +3327,7 @@
     
         <a href="..\../input/keyboard-input/navigation.html" title="兼容硬件导航" class="chapter done " data-progress="14.2.3" style="left: 76.89393939393939%;"></a>
     
-        <a href="..\../input/keyboard-input/commands.html" title="处理输入命令" class="chapter done " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
+        <a href="..\../input/keyboard-input/commands.html" title="处理按键动作" class="chapter done " data-progress="14.2.4" style="left: 77.27272727272727%;"></a>
     
         <a href="..\../input/game-controller/index.html" title="兼容游戏控制器" class="chapter  " data-progress="14.3" style="left: 77.65151515151516%;"></a>
     
@@ -3454,13 +3454,67 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_2533">
+                    <section class="normal" id="section-gitbook_717">
                     
                         <blockquote>
 <p>编写:<a href="https://github.com/zhaochunqi" target="_blank">zhaochunqi</a></p>
 <p>校对:</p>
 </blockquote>
-<h1 id="-">处理输入命令</h1>
+<h1 id="-">处理按键动作</h1>
+<p>当预估给予可编辑当文本域焦点时，如一个EditText元素，而且用户拥有一个实体键盘连接，所有当输入由系统处理。然而如果你想接管或直接处理键盘输入键盘操作，通过实现接口KeyEvent.Callback的回调方法，如 onKeyDown()和onKeyMultiple().</p>
+<p>Activity和View类都实现了KeyEvent.Callback的接口，所以通常你只需要在这些重写回调方法来适当的扩展这些类。</p>
+<blockquote>
+<p><strong>注意：</strong>当使用KeyEvent类和相关的API处理键盘事件时，你期望的应该是只从实体键盘中接收。你永远不应该指望从一个软键盘(如屏幕键盘)来接受点击事件。</p>
+</blockquote>
+<h2 id="-">处理单个按键点击事件</h2>
+<p>处理单个的按键点击，实现合适的 onKeyDown() 或 onKeyUp()。通常，你使用onKeyUp()来确保你只接收一个事件。如果用户点击并按住按钮不放，onKeyDown()会被调用多次。</p>
+<p>举例，这是一个对一些按键控制游戏的实现：</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onKeyUp</span>(<span class="hljs-keyword">int</span> keyCode, KeyEvent event) {
+    <span class="hljs-keyword">switch</span> (keyCode) {
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_D:
+            moveShip(MOVE_LEFT);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_F:
+            moveShip(MOVE_RIGHT);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_J:
+            fireMachineGun();
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_K:
+            fireMissile();
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onKeyUp(keyCode, event);
+    }
+}
+</code></pre>
+<h2 id="-">处理修饰键</h2>
+<p>为了对修饰键进行回应如一个组合Shift和Control修饰键，你可以查询KeyEvent传递到回调方法。一些方法提供一些信息关于修饰键如getModifiers() 和 getMetaState()。然而，最简单的解决方案时检查你关心的按键是否被按下了的方法，如 isShiftPressed() 和 isCtrlPressed()。</p>
+<p>例如，有一个onKeyDown() 的实现，当Shift键和一个其他当键按下当时候做一些额外的处理:</p>
+<pre><code class="lang-java"><span class="hljs-annotation">@Override</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onKeyUp</span>(<span class="hljs-keyword">int</span> keyCode, KeyEvent event) {
+    <span class="hljs-keyword">switch</span> (keyCode) {
+        ...
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_J:
+            <span class="hljs-keyword">if</span> (event.isShiftPressed()) {
+                fireLaser();
+            } <span class="hljs-keyword">else</span> {
+                fireMachineGun();
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">case</span> KeyEvent.KEYCODE_K:
+            <span class="hljs-keyword">if</span> (event.isShiftPressed()) {
+                fireSeekingMissle();
+            } <span class="hljs-keyword">else</span> {
+                fireMissile();
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onKeyUp(keyCode, event);
+    }
+}
+</code></pre>
 
                     
                     </section>
